@@ -1,0 +1,17 @@
+import pygame
+import random
+
+pygame.init()   # Initiating the pygame module (Optional but a good practice)
+W=500
+H=500
+
+WIN=pygame.display.set_mode((W,H))#Setting the initial Screen Dimension
+pygame.display.set_caption("SNAKE GAME")
+
+snake_x=W//2#Initiating the x and y coordinates of the snake to half of the window parameters
+snake_y=H//2
+del_x=0
+del_y=0
+fud_x,fud_y=random.randint(0,W),random.randint(0,H)#Initiating a random interger value between 0 and the Width or height of the screen as the x and y of the food respectively
+snake_body=[(snake_x,snake_y)]#Creating the body of the snake as list and adding the initial position to it as a tuple
+
