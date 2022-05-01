@@ -1,0 +1,38 @@
+while RUN:
+	clock.tick(30)
+	WIN.fill((0,0,0))#Filling the screen with a black (0,0,0) color everytime the loop runs
+
+	for event in pygame.event.get():# Cheching for the different types of events occuring
+		if event.type==pygame.QUIT:
+			RUN=False
+
+		if event.type==pygame.KEYDOWN:#Checking for a keyboard press
+			if event.key==pygame.K_UP:#Checking the key pressed was an UP arrow key
+				if not(del_y==10):#CHecking if the body wasn't moving downward previously
+					del_y=-10
+					del_x=0
+			elif event.key==pygame.K_DOWN:#Checking the key pressed was a DOWN arrow key
+				if not (del_y==-10):
+					del_y=10
+					del_x=0
+			elif event.key==pygame.K_LEFT:#Checking the key pressed was a LEFT arrow key
+				if not (del_x==10):
+					del_y=0
+					del_x=-10
+			elif event.key==pygame.K_RIGHT:#Checking the key pressed was a RIGHT arrow key
+				if not(del_x==-10):
+					del_y=0
+					del_x=10
+
+
+	snake_move()
+	eat()
+	draw_snake()
+	draw_fud()
+	if self_hit():
+		RUN=False # Quitting the loop as the snake has eaten itself by setting RUN as False
+
+	pygame.display.update()# Updating the changes made to the game window
+
+
+pygame.quit()
